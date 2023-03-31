@@ -1,0 +1,35 @@
+{
+  "name": "interest-sharing-platform-web3",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "node backend/scripts/compile.cjs",
+    "pretest": "npm run compile",
+    "test": "node_modules/mocha/bin/_mocha backend/tests",
+    "predeploy": "npm run test",
+    "deploy": "node backend/scripts/deploy.cjs",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.14",
+    "@openzeppelin/contracts": "^4.8.2",
+    "@truffle/hdwallet-provider": "^2.1.9",
+    "dotenv": "^16.0.3",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^10.2.0",
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "solc": "^0.8.19",
+    "web3": "^1.9.0",
+    "web3.storage": "^4.5.4"
+  }
+}
