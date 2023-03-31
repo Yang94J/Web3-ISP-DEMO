@@ -56,8 +56,6 @@ export default function devProjs(props){
         await props.cbs.refresh();
     }
 
-    console.log(projDetails)
-
     return (
         <div>
             {
@@ -67,7 +65,7 @@ export default function devProjs(props){
                     {
                         registeredProj.map((item,index) => (
                             
-                            <Card sx={{ maxWidth: 300 , marginTop: 3, marginLeft : 3}}>
+                            <Card key={index} sx={{ maxWidth: 300 , marginTop: 3, marginLeft : 3}}>
                                 <CardContent>
                                     <ProjCards proj={item} />
                                 </CardContent>
@@ -90,7 +88,7 @@ export default function devProjs(props){
                     {
                         submitProj.map((item,index) => (
                             
-                            <Card sx={{ maxWidth: 300 , marginTop: 3, marginLeft : 3}}>
+                            <Card key={index} sx={{ maxWidth: 300 , marginTop: 3, marginLeft : 3}}>
                                 <CardContent>
                                     <ProjCards proj={item} />
                                     <Typography variant="h6"> Wait Approval</Typography>
@@ -111,7 +109,7 @@ export default function devProjs(props){
                     {
                         approvedProj.map((item,index) => (
                             
-                            <Card sx={{ maxWidth: 300 , marginTop: 3, marginLeft : 3}}>
+                            <Card key={index} sx={{ maxWidth: 300 , marginTop: 3, marginLeft : 3}}>
                                     <CardContent>
                                     <ProjCards proj={item} />
                                     <ProgressLabelBar value={item.funding.donationAmount*100/item.funding.requireAmount} text={"funding : "+item.funding.donationAmount + "/" + item.funding.requireAmount}/>

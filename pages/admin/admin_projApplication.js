@@ -87,8 +87,7 @@ function ProjApplication(props){
               <Container sx={{  display: "flex",  flexWrap: "wrap",}}>
                     {
                         details.map((item,index) => (
-                            
-                            <Card sx={{ maxWidth: 300 }}>
+                            <Card key={index} sx={{ maxWidth: 300 }}>
                                 <CardContent>
                                     <ProjCards proj={item} />
                                 </CardContent>

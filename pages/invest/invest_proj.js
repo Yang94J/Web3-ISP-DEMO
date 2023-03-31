@@ -66,7 +66,7 @@ export default function investProjs(props){
                     {
                         projDetails.map((item,index) => (
                             
-                            <Card sx={{ maxWidth: 300, marginLeft : 5, marginTop : 5}}>
+                            <Card key={index} sx={{ maxWidth: 300, marginLeft : 5, marginTop : 5}}>
                                 <CardContent>
                                     <ProjCards proj={item} />
                                     <ProgressLabelBar value={item.funding.donationAmount*100/item.funding.requireAmount} text={"funding : "+ item.funding.donationAmount + "/" + item.funding.requireAmount}/>

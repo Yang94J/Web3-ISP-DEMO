@@ -17,7 +17,6 @@ import UserInfo from './profile_userInfo';
 
 import { Container } from '@mui/material';
 
-import styles from "../../styles/Profile.module.css";
 
 async function connectionManagement(){
   if (!this.state.login){
@@ -104,13 +103,9 @@ export default class Profile extends React.Component{
 
   async componentDidMount() {
     console.log("mounting...")
-    const login = Boolean(localStorage.getItem('login'));
-    const addr = localStorage.getItem('account') === 'null' ? null :  localStorage.getItem('account');
-
-    console.log(login);
-    console.log(login==false);
-
-    if (login){
+    const login = localStorage.getItem('login') == 'null' || localStorage.getItem('login') == 'false' ? false : Boolean(localStorage.getItem('login'));
+    const addr = localStorage.getItem('account') == 'null' ? null :  localStorage.getItem('account');
+    if (login == true){
       console.log("fetching data...")
       await this.refreshRender(addr);
     }

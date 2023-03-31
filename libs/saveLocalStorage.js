@@ -1,9 +1,7 @@
 function saveLocalStorage(){
-    console.log("saving to localStorage");
     localStorage.setItem('account', this.state.account);
     localStorage.setItem('login',this.state.login);
-    console.log("saved successfully...");
-    console.log(this.state);
+    console.log("saved state to LocalStorage successfully...");
 }
 
 export default saveLocalStorage;

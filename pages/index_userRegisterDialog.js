@@ -51,6 +51,8 @@ export default function userRegisterDialog(props){
     return (
         <div>
           {
+            state!=undefined
+            &&
             state.login
             &&
             !state.header.isUser

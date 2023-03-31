@@ -39,7 +39,7 @@ export default function donations(props){
             <Container sx={{  display: "flex",  flexWrap: "wrap", paddingTop : 1}}>
                 {
                     donationDetails.map((item,index) => (
-                        <Card sx={{ maxWidth: 392 ,marginTop : 5, marginLeft : 5}}>
+                        <Card key={index} sx={{ maxWidth: 392 ,marginTop : 5, marginLeft : 5}}>
                             <CardContent>
                                 <DonationCards donation={item} nft={nftAddrs[index]}/>
                             </CardContent>

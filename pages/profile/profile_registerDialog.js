@@ -48,6 +48,8 @@ export default function DevRegisterDialog(props){
     return (
     <div>
         {
+        state != undefined
+        &&
         state.login
         &&
         !state.header.isDev

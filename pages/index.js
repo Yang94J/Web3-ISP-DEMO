@@ -14,9 +14,11 @@ import RenderRegisterDialog from "./index_userRegisterDialog";
 
 async function connectionManagement(){
   if (!this.state.login){
+    console.log("connect");
     const account = await connectToMetamask();
     await this.refreshRender(account);
   }else{
+    console.log("disconnect");
     await disconnectFromMetamask();
     this.setState({
       header : await this.userInfoUpdate(null),
@@ -39,6 +41,8 @@ async function refreshRender(acc) {
     projNum : await this.platform.methods.projNum().call(),
   };
 
+  console.log("set value here ");
+  console.log("acc" + " " + acc);
   this.setState({
     login : true,
     account : acc,
@@ -90,9 +94,11 @@ export default class Index extends React.Component{
   }
 
   async componentDidMount() {
-    const login = Boolean(localStorage.getItem('login'));
-    const addr = localStorage.getItem('account') === 'null' ? null :  localStorage.getItem('account');
-    if (login){
+    console.log("mounting...")
+    const login = localStorage.getItem('login') == 'null' || localStorage.getItem('login') == 'false' ? false : Boolean(localStorage.getItem('login'));
+    const addr = localStorage.getItem('account') == 'null' ? null :  localStorage.getItem('account');
+    if (login == true){
+      console.log("fetching data...")
       await this.refreshRender(addr);
     }
   }

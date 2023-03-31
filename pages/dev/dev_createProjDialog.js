@@ -7,7 +7,6 @@ import ArticleIcon from '@mui/icons-material/Article';
 import InfoIcon from '@mui/icons-material/Info';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { margin } from '@mui/system';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -28,7 +27,14 @@ export default function ProjectCreateFlow(props){
     const [amount,setAmount] = React.useState(0);
     const [duration,setDuration] =  React.useState(0);
 
-
+    React.useEffect(() => {
+        async function render() {
+            if (isETH){
+                setERC20(projAddr);
+            }
+        }
+        render();
+    }, [isETH,projAddr]);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -48,13 +54,6 @@ export default function ProjectCreateFlow(props){
 
     const handleSubmit = async() => {
         console.log("submit");
-        console.log(isETH);
-        if (isETH){
-            console.log(projAddr)
-            setERC20(projAddr);
-            console.log("change");
-        }
-        console.log(ERC20);
         try{       
             await props.cb(projAddr,projName,projDesc,isETH,ERC20,amount,duration);
             setOpenS(true);
@@ -68,7 +67,10 @@ export default function ProjectCreateFlow(props){
 
     return (
         <div>
-            <Card style={{ minWidth :1200, display: "flex", justifyContent: "space-between", alignItems: "center" , backgroundColor: 'transparent'}}>
+            {
+                props.proj!=undefined
+                &&
+                <Card style={{ minWidth :1200, display: "flex", justifyContent: "space-between", alignItems: "center" , backgroundColor: 'transparent'}}>
                 <CardContent>
                     <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
                         You have <b>{props.proj.length}</b> project(s) in total
@@ -79,7 +81,9 @@ export default function ProjectCreateFlow(props){
                         Create New Project
                     </Button>
                 </CardActions>
-            </Card>
+                </Card>
+            }
+
             <Dialog  open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: "100000" } }}>
                 <DialogContent>
                     <DialogContentText>

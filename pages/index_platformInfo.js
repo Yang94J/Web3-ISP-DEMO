@@ -9,14 +9,18 @@ export default function renderPlatformInfo(props){
         <div>
 
           {
+            state!=undefined
+            &&
             !state.login
             &&
             <Typography variant="h5">Interest Sharing Platform provider entrance of financial Invest for web3 users</Typography>
           }
 
           {
+            state!=undefined
+            &&
             state.login
-              &&
+            &&
             (
               <div>
                 <Typography variant="h6">Welcome, {state.account}!</Typography>
